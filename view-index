@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        display : flex;
+        flex-direction : column;
+        justify-content : flex-start;
+        /* align-items : flex-start; */
+        gap : 15px;
+    }
+    .tabelMargin{
+        text-align : center;
+        background-color : grey;
+        color : white;
+    }
+    td {
+        padding : 5px 5px;
+    }
+    .buttonAksi{
+        text-align : center;
+    }
+
+    .addwargaBtn{
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+    .addwargaBtn:hover{
+        background-color : green;
+        color:white;
+    }
+
+    .deleteBtn:hover{
+        background-color : red;
+        color:white;
+    }
+
+    .editBtn:hover{
+        background-color : yellow;
+    }
+</style>
+<body>
+    
+    <a  href="/warga/create">
+        <button class="addwargaBtn"> 
+            ADD WARGA
+        </button>
+    </a>
+    <div class="container">
+    <table  border="1">
+        <tr class="tabelMargin">
+            <td>Id</td>
+            <td>Nama</td>
+            <td>NIK</td>
+            <td>Jenis Kelamin</td>
+            <td>Alamat</td>
+            <td>Edit</td>
+            <td>Delete</td>
+        </tr>
+        @foreach($warga as $w)
+        <tr class="tabelIsi">
+            <td>{{$w->id}}</td>
+            <td>{{$w->nama}}</td>
+            <td>{{$w->nik}}</td>
+            <td >{{$w->jenis_kelamin}}</td>
+            <td>{{$w->alamat}}</td>
+            <td class="buttonAksi">
+                <a href="/warga/{{$w->id}}/edit">
+                    <button class="editBtn">Edit</button>
+                </a>
+            </td>
+            <td class="buttonAksi">
+                <form action="/warga/{{$w->id}}" method="POST">
+                    @csrf
+                    @method('delete')
+                    <input class="deleteBtn" type="submit" value="Delete">
+                </form>
+                
+            </td>
+        </tr>
+        @endforeach
+    </table> 
+</div>
+</body>
+</html>
