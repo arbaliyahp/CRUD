@@ -1,0 +1,51 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        display : flex;
+        flex-direction : column;
+        justify-content : center;
+        align-items : center;
+    }
+    .formAdd{
+        display: flex;
+        flex-direction : column;
+
+    }
+
+    .saveBtn{
+        margin-top: 10px;
+    }
+
+    .saveBtn:hover{
+        background-color : blue;
+        color : white;
+    }
+</style>
+<body>
+<div class="container">
+    <h1>Create Warga</h1>
+    
+    <form class="formAdd" action="/warga/store" method="POST">
+        @csrf
+        <h5>Nama</h5>
+        <input type="text" name="nama" placeholder="Nama"><br>
+        <input type="text" name="jenis_kelamin" placeholder="Jenis Kelamin"><br>
+        <h5>NIK</h5>
+        <input type="text" name="nik" placeholder="NIK"><br>
+       
+        <h5> Alamat</h5>
+        <textarea name="alamat" rows="10"></textarea>
+        <input class="saveBtn" type="submit" name="submit" value="Save">
+    
+    </form>
+</div>
+</body>
+</html>
