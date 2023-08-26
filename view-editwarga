@@ -1,0 +1,48 @@
+
+
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        display : flex;
+        flex-direction : column;
+        justify-content : center;
+        align-items : center;
+    }
+    .formEdit{
+        display: flex;
+        flex-direction : column;
+
+    }
+
+    .updateBtn:hover {
+        background-color : blue;
+        color : white;
+    }
+</style>
+<body>
+<div class="container">
+<h1>Edit Warga</h1>
+
+<form class="formEdit" action="/warga/{{$warga->id}}" method="POST">
+    @method('put')
+    @csrf
+    <h5>Nama</h5>
+    <input type="text" name="nama" placeholder="Nama" value="{{$warga->nama}}"><br>
+    <input type="text" name="jenis_kelamin" placeholder="Jenis Kelamin" value="{{$warga->jenis_kelamin}}"><br>
+    <h5>NIK</h5>
+    <input type="text" name="nik" placeholder="NIK" value="{{$warga->nik}}"><br>
+
+    <h5> Alamat</h5>
+    <textarea name="alamat" rows="10">{{$warga->alamat}}</textarea><br>
+    <input class="updateBtn" type="submit" name="submit" value="Update">
+</form>
+</div>
+</body>
+</html>
